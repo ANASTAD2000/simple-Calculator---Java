@@ -16,6 +16,16 @@ public class Main {
     public static double multiplication(double a, double b) {
         return a * b;
     }
+    // Function for division
+    public static double division(double a, double b) {
+        if (b == 0) {
+            System.out.println("Error: Division by zero!");
+            return Double.NaN; // Return NaN (Not a Number) if division by zero
+        }
+        return a / b;
+    }
+
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -27,11 +37,12 @@ public class Main {
             System.out.println("1. Addition");
             System.out.println("2. Subtraction");
             System.out.println("3. Multiplication");
-            System.out.println("4. Exit");
+            System.out.println("4. Division");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
-            if (choice != 4) {
+            if (choice != 5) {
                 System.out.print("Enter the first number: ");
                 num1 = scanner.nextDouble();
 
@@ -48,12 +59,15 @@ public class Main {
                     case 3:
                         System.out.println("Result: " + multiplication(num1, num2));
                         break;
+                    case 4:
+                        System.out.println("Result: " + division(num1, num2));
+                        break;
                     default:
                         System.out.println("Invalid choice, please try again.");
                 }
             }
 
-        } while (choice != 4);
+        } while (choice != 5);
 
         System.out.println("Exiting the program...");
         scanner.close();
