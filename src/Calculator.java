@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class  Calculator {
+public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -13,17 +13,20 @@ public class  Calculator {
             System.out.println("3. Multiplication");
             System.out.println("4. Division");
             System.out.println("5. Power");
-            System.out.println("6. Exit");
+            System.out.println("6. Square Root");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
-            if (choice != 6) {
+            if (choice != 7) {
                 System.out.print("Enter the first number: ");
                 num1 = scanner.nextDouble();
 
                 if (choice == 5) {
                     System.out.println("Power Operation: The first number will be raised to the power of the second number.");
                     System.out.print("Enter the second number (exponent): ");
+                } else if (choice == 6) {
+                    System.out.println("Square Root Operation: The square root of the first number will be calculated.");
                 } else {
                     switch (choice) {
                         case 1:
@@ -63,12 +66,15 @@ public class  Calculator {
                     case 5:
                         System.out.println("Result: " + power(num1, num2));
                         break;
+                    case 6:
+                        System.out.println("Result: " + squareRoot(num1));
+                        break;
                     default:
                         System.out.println("Invalid choice. Please try again.");
                 }
             }
 
-        } while (choice != 6);
+        } while (choice != 7);
 
         System.out.println("Exiting the program...");
         scanner.close();
@@ -93,7 +99,7 @@ public class  Calculator {
     public static double division(double a, double b) {
         if (b == 0) {
             System.out.println("Error: Division by zero is not allowed.");
-            return Double.NaN;
+            return Double.NaN; // Return NaN if the number is negative
         }
         return a / b;
     }
@@ -101,5 +107,14 @@ public class  Calculator {
     // Power function
     public static double power(double base, double exponent) {
         return Math.pow(base, exponent);
+    }
+
+    // Square Root function
+    public static double squareRoot(double a) {
+        if (a < 0) {
+            System.out.println("Error: Cannot calculate square root of a negative number.");
+            return Double.NaN; // Return NaN if the number is negative
+        }
+        return Math.sqrt(a);
     }
 }
