@@ -8,7 +8,7 @@ public class Calculator {
         int numForFactorial;
 
         do {
-            // User interface design
+            // User interface
             System.out.println("===============================================");
             System.out.println("            Simple Calculator");
             System.out.println("===============================================");
@@ -26,23 +26,43 @@ public class Calculator {
 
             if (choice != 8) {
                 if (choice == 6) {
-                    // Square Root operation explanation
                     System.out.println("\nYou have chosen the Square Root operation.");
                     System.out.println("The square root of the number you provide will be calculated.");
                     System.out.print("Enter a number: ");
                     num1 = scanner.nextDouble();
                     System.out.println("Result: " + squareRoot(num1));
                 } else if (choice == 7) {
-                    // Factorial operation explanation
                     System.out.println("\nYou have chosen the Factorial operation.");
                     System.out.println("The factorial of the number you provide will be calculated.");
                     System.out.print("Enter a number for factorial: ");
                     numForFactorial = scanner.nextInt();
                     System.out.println("Result: " + factorial(numForFactorial));
                 } else {
-                    // Other operations
                     System.out.print("\nEnter the first number: ");
                     num1 = scanner.nextDouble();
+
+                    // Explanation of the selected operation
+                    switch (choice) {
+                        case 1:
+                            System.out.println("You chose Addition. Now enter the second number to add.");
+                            break;
+                        case 2:
+                            System.out.println("You chose Subtraction. Now enter the second number to subtract from the first.");
+                            break;
+                        case 3:
+                            System.out.println("You chose Multiplication. Now enter the second number to multiply with the first.");
+                            break;
+                        case 4:
+                            System.out.println("You chose Division. Now enter the second number to divide the first by.");
+                            break;
+                        case 5:
+                            System.out.println("You chose Power. Now enter the exponent to raise the first number to.");
+                            break;
+                        default:
+                            System.out.println("Invalid operation.");
+                            continue;
+                    }
+
                     System.out.print("Enter the second number: ");
                     num2 = scanner.nextDouble();
 
@@ -74,49 +94,44 @@ public class Calculator {
         scanner.close();
     }
 
-    // Addition function
+    // Functions remain the same
     public static double addition(double a, double b) {
         return a + b;
     }
 
-    // Subtraction function
     public static double subtraction(double a, double b) {
         return a - b;
     }
 
-    // Multiplication function
     public static double multiplication(double a, double b) {
         return a * b;
     }
 
-    // Division function
     public static double division(double a, double b) {
         if (b == 0) {
             System.out.println("\nError: Division by zero is not allowed.");
-            return Double.NaN;  // Return NaN for division by zero
+            return Double.NaN;
         }
         return a / b;
     }
 
-    // Power (Exponentiation) function
+
     public static double power(double base, double exponent) {
         return Math.pow(base, exponent);
     }
 
-    // Square Root function
     public static double squareRoot(double a) {
         if (a < 0) {
             System.out.println("\nError: Cannot calculate square root of a negative number.");
-            return Double.NaN;  // Return NaN for invalid square root
+            return Double.NaN;
         }
         return Math.sqrt(a);
     }
 
-    // Factorial function
     public static long factorial(int n) {
         if (n < 0) {
             System.out.println("\nError: Factorial is not defined for negative numbers.");
-            return -1;  // Return -1 to indicate error for negative input
+            return -1;
         }
         long result = 1;
         for (int i = 1; i <= n; i++) {
@@ -125,4 +140,3 @@ public class Calculator {
         return result;
     }
 }
-        7
